@@ -33,28 +33,29 @@ vector<int> obtenerListaDeAristas(int grafo[5][5], int inicio)
 //Nota: se sugiere usar recursion
 bool existeCamino(int grafo[5][5], int inicio, int destino,int profundidad)
 {
-    if(profundidad<0 && inicio<5) // se le da un limite ala profundidad
+    if(profundidad<0 && inicio<5) // Detenemos la recursividad poniendole limites ala profundidad y al inicio
+
         return false; // retorna false
 
-    if(inicio==destino)  // que el inicio sea igual al destino
+    if(inicio==destino)  // esto es cuando llegemos en el Nodo destino
     return true; // devolvemos true
 
 
-        for(int i=0; i<5; i++) // verificamos en las otras aristas
+        for(int i=0; i<5; i++) // Buscamos por otras aristas
         {
-            if(grafo[inicio][i]==infinito) // verificamos si existe el camino
+            if(grafo[inicio][i]==infinito) // verificamos sino  existe el camino
                 {
-                    continue; // no le ponemos atencion
+                    continue; // ignoramos este Nodo
                 }
 
 
-            if(existeCamino(grafo,i,destino,profundidad-1)) // verificamos otro con la recursividad
+            if(existeCamino(grafo,i,destino,profundidad-1)) // verificamos otro camino con la recursividad y cambiando el valor del inicio y disminuyendo la profundidad
                 return true; // si lo llega a encontrar que nos retorne true
 
         }
 
     return false; // si no hay camino que nos de false
-    return false;
+
 }
 
 int main ()
